@@ -1,0 +1,23 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+  opacity: 0.8;
+}

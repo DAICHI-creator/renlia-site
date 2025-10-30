@@ -1,0 +1,140 @@
+.home-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
+  --logo-size: 400px;    /* ロゴの大きさ（pxまたは%で指定） */
+  --logo-x:37%;          /* 画面左からの距離（画面幅に対する%） */
+  --logo-y: 0%;          /* 画面上からの距離（画面高さに対する%） */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ホログラムのクリック可能エリア */
+.hologram-area {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-hologram {
+  left: 25%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+
+.right-hologram {
+  right: 25.5%;
+  top: 42%;
+  transform: translate(50%, -50%);
+}
+
+.hologram-area:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.hover-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.hologram-area:hover .hover-overlay {
+  opacity: 1;
+}
+
+.hover-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.2rem;
+  white-space: nowrap;
+}
+
+/* ロゴ - 独立して配置 */
+.logo-image {
+  position: absolute;
+  top: var(--logo-y);
+  left: var(--logo-x);
+  height: var(--logo-size);
+  width: auto;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
+  cursor: default;
+  z-index: 10;
+}
+
+.home-header {
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.home-main-nav {
+  display: flex;
+  gap: 2rem;
+  pointer-events: auto;
+}
+
+.home-main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.home-main-nav a:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    --logo-size: 80px;    /* モバイル用のロゴサイズ */
+    --logo-x: 5%;
+    --logo-y: 3%;
+  }
+
+  .home-header {
+    top: 1.5rem;
+    right: 2rem;
+  }
+
+  .home-main-nav {
+    gap: 1rem;
+  }
+
+  .home-main-nav a {
+    font-size: 0.9rem;
+  }
+
+  .hologram-area {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hover-text {
+    font-size: 1rem;
+  }
+}

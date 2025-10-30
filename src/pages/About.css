@@ -1,0 +1,685 @@
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  color: #2c3e50;
+  position: relative;
+
+  /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
+  --logo-size: 120px;    /* ロゴの大きさ（pxまたは%で指定） */
+  --logo-x: 5%;          /* 画面左からの距離（画面幅に対する%） */
+  --logo-y: 3%;          /* 画面上からの距離（画面高さに対する%） */
+}
+
+/* ロゴ - 独立して配置 */
+.logo-link {
+  position: absolute;
+  top: var(--logo-y);
+  left: var(--logo-x);
+  z-index: 10;
+  display: block;
+}
+
+.logo-link img {
+  height: var(--logo-size);
+  width: auto;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
+}
+
+.logo-link:hover img {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-header .header-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-decoration: none;
+  letter-spacing: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.about-header .header-logo:hover {
+  color: #3498db;
+}
+
+.about-main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.about-main-nav a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.about-main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #3498db;
+  transition: width 0.3s ease;
+}
+
+.about-main-nav a:hover {
+  color: #3498db;
+}
+
+.about-main-nav a:hover::after {
+  width: 100%;
+}
+
+.about-content {
+  padding: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+}
+
+.about-main-title {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 1rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  animation: fadeInUp 1s ease;
+}
+
+.about-tagline {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  color: #7f8c8d;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+/* 代表メッセージセクション */
+.message-section {
+  max-width: 1000px;
+  margin: 0 auto 5rem;
+}
+
+.message-container {
+  background: white;
+  border-radius: 20px;
+  padding: 3.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.message-content {
+  line-height: 2;
+}
+
+.message-text {
+  font-size: 1.1rem;
+  line-height: 2.2;
+  color: #5a6c7d;
+  text-align: center;
+}
+
+.message-text:last-of-type {
+  margin-bottom: 2.5rem;
+}
+
+.message-signature {
+  font-size: 1rem;
+  text-align: right;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Mission / Vision / Value */
+.philosophy-section {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+
+.philosophy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.philosophy-item {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.philosophy-item:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.philosophy-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+.philosophy-text {
+  font-size: 1.3rem;
+  line-height: 2;
+  color: #5a6c7d;
+}
+
+.value-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.value-item-detail {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.value-item-detail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.value-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.value-item-detail h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1rem;
+  color: #2c3e50;
+}
+
+.value-item-detail p {
+  font-size: 1rem;
+  color: #5a6c7d;
+  line-height: 1.6;
+}
+
+/* 対談形式の代表メッセージセクション */
+.message-interview-section {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+
+.message-interview-section .section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #2c3e50;
+}
+
+.interview-item {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.interview-item:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.interview-item-reverse {
+  flex-direction: row-reverse;
+}
+
+.interview-photo {
+  flex-shrink: 0;
+  width: 280px;
+  height: 280px;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.2rem;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+}
+
+.ceo-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.interview-content {
+  flex: 1;
+}
+
+.interview-subtitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.6;
+}
+
+.interview-text {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #5a6c7d;
+  margin-bottom: 1.5rem;
+}
+
+.interview-text:last-of-type {
+  margin-bottom: 0;
+}
+
+.interview-signature {
+  font-size: 1rem;
+  text-align: right;
+  color: #7f8c8d;
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+/* チームセクション */
+.team-section {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+
+.team-section .section-title {
+  margin-bottom: 3rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.team-member {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.member-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: white;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+}
+
+.member-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05rem;
+  color: #2c3e50;
+}
+
+.member-role {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05rem;
+}
+
+.member-bio {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #5a6c7d;
+  text-align: left;
+}
+
+/* お問い合わせフォームセクション */
+.contact-form-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 5rem 2rem;
+  margin: 0 -4rem -4rem;
+  margin-top: 5rem;
+}
+
+.contact-form-section .section-title {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.contact-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.about-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  color: white;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: #764ba2;
+  color: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.about-submit-button {
+  padding: 1.2rem 2.5rem;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.about-submit-button:active {
+  transform: translateY(-1px);
+}
+
+.cta-section {
+  text-align: center;
+  padding: 3.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.15rem;
+  font-weight: 700;
+  color: white;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: white;
+  color: #667eea;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    --logo-size: 70px;
+    --logo-x: 5%;
+    --logo-y: 2%;
+  }
+
+  .about-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .about-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-main-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+  }
+
+  .about-tagline {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .message-container,
+  .philosophy-item,
+  .cta-section {
+    padding: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .message-text {
+    font-size: 1rem;
+    line-height: 2;
+  }
+
+  /* インタビュー形式のレスポンシブ対応 */
+  .interview-item,
+  .interview-item-reverse {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .interview-photo {
+    width: 100%;
+    height: 250px;
+  }
+
+  .interview-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .interview-text {
+    font-size: 1rem;
+  }
+
+  .philosophy-label {
+    font-size: 1.3rem;
+  }
+
+  .philosophy-text {
+    font-size: 1.1rem;
+  }
+
+  .value-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .contact-form-section {
+    padding: 3rem 1.5rem;
+    margin: 0 -1.5rem -2rem;
+  }
+
+  .form-container {
+    padding: 2rem;
+  }
+
+  .about-submit-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,194 @@
+.design-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+
+  /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
+  --logo-size: 120px;    /* ロゴの大きさ（pxまたは%で指定） */
+  --logo-x: 5%;          /* 画面左からの距離（画面幅に対する%） */
+  --logo-y: 3%;          /* 画面上からの距離（画面高さに対する%） */
+}
+
+/* ロゴ - 独立して配置 */
+.logo-link {
+  position: absolute;
+  top: var(--logo-y);
+  left: var(--logo-x);
+  z-index: 10;
+  display: block;
+}
+
+.logo-link img {
+  height: var(--logo-size);
+  width: auto;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
+}
+
+.logo-link:hover img {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+}
+
+.design-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.design-header .header-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.design-header .header-logo:hover {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.design-content {
+  padding: 4rem;
+}
+
+.design-hero-section {
+  text-align: center;
+  margin-bottom: 6rem;
+  padding: 4rem 0;
+}
+
+.design-title {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 1rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  animation: fadeInUp 1s ease;
+}
+
+.design-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.3rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+.services-section {
+  margin-bottom: 6rem;
+}
+
+.services-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.service-card p {
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.philosophy-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.philosophy-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.3rem;
+}
+
+.philosophy-text {
+  font-size: 1.2rem;
+  line-height: 2;
+  opacity: 0.9;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .design-container {
+    --logo-size: 70px;    /* モバイル用のロゴサイズ */
+    --logo-x: 5%;
+    --logo-y: 2%;
+  }
+
+  .design-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .design-content {
+    padding: 2rem;
+  }
+
+  .design-title {
+    font-size: 3rem;
+  }
+
+  .design-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

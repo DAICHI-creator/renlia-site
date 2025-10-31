@@ -14,6 +14,14 @@ function Home() {
         className="hero-image"
       />
 
+      {/* 真ん中のホログラム（RENLIA） */}
+      <div
+        className="hologram-area center-hologram"
+        onClick={() => navigate('/about')}
+        aria-label="Aboutページへ"
+      >
+      </div>
+
       {/* 左側のホログラム（デザイン） */}
       <div
         className="hologram-area left-hologram"
@@ -38,13 +46,6 @@ function Home() {
 
       {/* ロゴ - 独立して配置 */}
       <img src={renliaLogo} alt="RENLIA" className="logo-image" />
-
-      {/* ナビゲーション */}
-      <header className="home-header">
-        <nav className="home-main-nav">
-          <a href="/about">ABOUT</a>
-        </nav>
-      </header>
     </div>
   );
 }

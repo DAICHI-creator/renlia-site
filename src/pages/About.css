@@ -5,9 +5,12 @@
   position: relative;
 
   /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
-  --logo-size: 120px;    /* ロゴの大きさ（pxまたは%で指定） */
-  --logo-x: 5%;          /* 画面左からの距離（画面幅に対する%） */
-  --logo-y: 3%;          /* 画面上からの距離（画面高さに対する%） */
+  --logo-size: 120px;
+  /* ロゴの大きさ（pxまたは%で指定） */
+  --logo-x: 5%;
+  /* 画面左からの距離（画面幅に対する%） */
+  --logo-y: 3%;
+  /* 画面上からの距離（画面高さに対する%） */
 }
 
 /* ロゴ - 独立して配置 */
@@ -158,6 +161,8 @@
 .philosophy-section {
   max-width: 1200px;
   margin: 0 auto 5rem;
+  background-color: ivory;
+  border-radius: 20px;
 }
 
 .philosophy-container {
@@ -180,17 +185,19 @@
 }
 
 .philosophy-label {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.15rem;
   margin-bottom: 1.5rem;
   color: #2c3e50;
+  text-align: center;
 }
 
 .philosophy-text {
   font-size: 1.3rem;
   line-height: 2;
   color: #5a6c7d;
+  text-align: center;
 }
 
 .value-list {
@@ -216,21 +223,23 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #667eea;
-  margin-bottom: 0.5rem;
   display: block;
 }
 
 .value-item-detail h4 {
-  font-size: 1.3rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
   color: #2c3e50;
+  text-align: center;
 }
 
 .value-item-detail p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #5a6c7d;
   line-height: 1.6;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* 対談形式の代表メッセージセクション */
@@ -563,6 +572,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

@@ -1,16 +1,30 @@
 .agri-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-  color: white;
+  background: #f8f5f0;
+  color: #2d3e2a;
   position: relative;
+  overflow-x: hidden;
 
-  /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
-  --logo-size: 120px;    /* ロゴの大きさ（pxまたは%で指定） */
-  --logo-x: 5%;          /* 画面左からの距離（画面幅に対する%） */
-  --logo-y: 3%;          /* 画面上からの距離（画面高さに対する%） */
+  --logo-size: 120px;
+  --logo-x: 5%;
+  --logo-y: 3%;
 }
 
-/* ロゴ - 独立して配置 */
+/* オーガニックな背景パターン */
+.agri-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(139, 195, 74, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(104, 159, 56, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .logo-link {
   position: absolute;
   top: var(--logo-y);
@@ -22,12 +36,12 @@
 .logo-link img {
   height: var(--logo-size);
   width: auto;
-  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease;
 }
 
 .logo-link:hover img {
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+  filter: drop-shadow(0 0 25px rgba(139, 195, 74, 0.6));
 }
 
 .agri-header {
@@ -35,164 +49,279 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(139, 195, 74, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .agri-header .header-logo {
   font-size: 2rem;
   font-weight: 700;
-  color: white;
+  color: #2d3e2a;
   text-decoration: none;
   letter-spacing: 0.5rem;
   transition: all 0.3s ease;
 }
 
 .agri-header .header-logo:hover {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  color: #689f38;
+}
+
+.agri-main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.agri-main-nav a {
+  color: #2d3e2a;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.agri-main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #689f38;
+  transition: width 0.3s ease;
+}
+
+.agri-main-nav a:hover {
+  color: #689f38;
+}
+
+.agri-main-nav a:hover::after {
+  width: 100%;
 }
 
 .agri-content {
   padding: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .agri-hero-section {
   text-align: center;
-  margin-bottom: 6rem;
-  padding: 4rem 0;
+  margin-bottom: 8rem;
+  position: relative;
+}
+
+/* 成長する植物のイメージ */
+.agri-hero-section::after {
+  content: '🌾';
+  position: absolute;
+  bottom: -7.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  opacity: 0.3;
+  animation: grow 3s ease-in-out infinite;
+}
+
+@keyframes grow {
+
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.5);
+  }
 }
 
 .agri-title {
   font-size: 5rem;
   font-weight: 900;
-  letter-spacing: 1rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.5rem;
+  color: #2d3e2a;
+  font-family: 'Georgia', serif;
   animation: fadeInUp 1s ease;
 }
 
 .agri-subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  letter-spacing: 0.3rem;
-  opacity: 0.9;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  color: #689f38;
   animation: fadeInUp 1s ease 0.2s both;
 }
 
 .mission-section {
-  max-width: 900px;
-  margin: 0 auto 6rem;
-  text-align: center;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 1000px;
+  margin: 0 auto 8rem;
+  padding: 4rem;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 3px solid #8bc34a;
+  position: relative;
+}
+
+/* 葉っぱの装飾 */
+.mission-section::before,
+.mission-section::after {
+  content: '🍃';
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.2;
+}
+
+.mission-section::before {
+  top: -1rem;
+  left: 2rem;
+  transform: rotate(-20deg);
+}
+
+.mission-section::after {
+  bottom: -1rem;
+  right: 2rem;
+  transform: rotate(160deg);
 }
 
 .mission-section h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
+  color: #2d3e2a;
+  font-family: 'Georgia', serif;
+  text-align: center;
 }
 
 .mission-text {
   font-size: 1.2rem;
-  line-height: 2;
-  opacity: 0.95;
+  line-height: 2.2;
+  color: #4a5c47;
+  text-align: center;
 }
 
 .features-section {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
 }
 
 .features-section h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: 0.3rem;
+  margin-bottom: 4rem;
+  letter-spacing: 0.2rem;
+  color: #2d3e2a;
+  font-family: 'Georgia', serif;
 }
 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border-radius: 25px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* カードの背景アクセント */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(139, 195, 74, 0.1) 0%, transparent 70%);
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+  top: -30%;
+  right: -30%;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(139, 195, 74, 0.2);
+  border-color: #8bc34a;
 }
 
 .feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  display: block;
 }
 
 .feature-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
+  color: #2d3e2a;
+  font-family: 'Georgia', serif;
 }
 
 .feature-card p {
-  line-height: 1.6;
-  opacity: 0.9;
+  line-height: 1.8;
+  color: #4a5c47;
+  font-size: 1.05rem;
 }
 
 .vision-section {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 4rem;
+  background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(139, 195, 74, 0.3);
 }
 
 .vision-section h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   text-align: center;
   margin-bottom: 3rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
+  color: white;
+  font-family: 'Georgia', serif;
 }
 
 .vision-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
 }
 
 .vision-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.vision-item-text {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .vision-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-5px);
-}
-
-.vision-item h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  letter-spacing: 0.1rem;
-}
-
-.vision-item p {
-  line-height: 1.8;
-  opacity: 0.9;
-  font-size: 1.1rem;
+  background: white;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes fadeInUp {
@@ -200,6 +329,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -208,7 +338,7 @@
 
 @media (max-width: 768px) {
   .agri-container {
-    --logo-size: 70px;    /* モバイル用のロゴサイズ */
+    --logo-size: 70px;
     --logo-x: 5%;
     --logo-y: 2%;
   }
@@ -220,19 +350,28 @@
   }
 
   .agri-content {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   .agri-title {
     font-size: 3rem;
+    letter-spacing: 0.3rem;
   }
 
   .agri-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .mission-section {
+    padding: 2.5rem 1.5rem;
   }
 
   .features-grid,
   .vision-content {
     grid-template-columns: 1fr;
+  }
+
+  .vision-section {
+    padding: 2.5rem 1.5rem;
   }
 }

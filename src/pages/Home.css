@@ -6,7 +6,7 @@
 
   /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
   --logo-size: 400px;    /* ロゴの大きさ（pxまたは%で指定） */
-  --logo-x:37%;          /* 画面左からの距離（画面幅に対する%） */
+  --logo-x:36%;          /* 画面左からの距離（画面幅に対する%） */
   --logo-y: 0%;          /* 画面上からの距離（画面高さに対する%） */
 }
 
@@ -20,14 +20,21 @@
 /* ホログラムのクリック可能エリア */
 .hologram-area {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.center-hologram {
+  left: 50%;
+  top: 25%;
+  transform: translate(-52%, -52%);
+  z-index: 2;
 }
 
 .left-hologram {
@@ -43,7 +50,7 @@
 }
 
 .hologram-area:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .hover-overlay {
@@ -75,7 +82,7 @@
   width: auto;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
   cursor: default;
-  z-index: 10;
+  z-index: 1;
 }
 
 .home-header {

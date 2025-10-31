@@ -1,16 +1,73 @@
 .design-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #0a0a0a;
   color: white;
   position: relative;
+  overflow-x: hidden;
 
-  /* ロゴのサイズと位置の設定 - ここの数値を変更するだけで調整可能 */
-  --logo-size: 120px;    /* ロゴの大きさ（pxまたは%で指定） */
-  --logo-x: 5%;          /* 画面左からの距離（画面幅に対する%） */
-  --logo-y: 3%;          /* 画面上からの距離（画面高さに対する%） */
+  --logo-size: 120px;
+  --logo-x: 5%;
+  --logo-y: 3%;
+
+  /* stacking contextを作って背景層を明示的に制御 */
+  z-index: 0;
 }
 
-/* ロゴ - 独立して配置 */
+/* 動的な幾何学模様の背景 */
+.design-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(45deg, transparent 48%, rgba(102, 126, 234, 0.03) 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(118, 75, 162, 0.03) 50%, transparent 52%);
+  background-size: 60px 60px;
+  animation: geometricMove 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes geometricMove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(60px, 60px);
+  }
+}
+
+/* グラデーションアクセント */
+.design-container::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
 .logo-link {
   position: absolute;
   top: var(--logo-y);
@@ -22,12 +79,12 @@
 .logo-link img {
   height: var(--logo-size);
   width: auto;
-  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
   transition: all 0.3s ease;
 }
 
 .logo-link:hover img {
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+  filter: drop-shadow(0 0 30px rgba(118, 75, 162, 0.8));
 }
 
 .design-header {
@@ -35,8 +92,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .design-header .header-logo {
@@ -49,45 +109,132 @@
 }
 
 .design-header .header-logo:hover {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  color: #667eea;
+}
+
+.design-main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.design-main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.design-main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #667eea;
+  transition: width 0.3s ease;
+}
+
+.design-main-nav a:hover {
+  color: #667eea;
+}
+
+.design-main-nav a:hover::after {
+  width: 100%;
 }
 
 .design-content {
   padding: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .design-hero-section {
   text-align: center;
-  margin-bottom: 6rem;
-  padding: 4rem 0;
+  margin-bottom: 8rem;
+  padding: 6rem 0;
+  position: relative;
+}
+
+/* 抽象的な図形装飾 */
+.design-hero-section::before,
+.design-hero-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.design-hero-section::before {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  top: -200px;
+  left: -200px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.design-hero-section::after {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  bottom: -150px;
+  right: -150px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(30px, -30px) rotate(180deg);
+  }
 }
 
 .design-title {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 900;
-  letter-spacing: 1rem;
+  letter-spacing: 0.8rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   animation: fadeInUp 1s ease;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
 }
 
 .design-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.3rem;
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
   animation: fadeInUp 1s ease 0.2s both;
 }
 
 .services-section {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
 }
 
 .services-section h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   letter-spacing: 0.3rem;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
 }
 
 .services-grid {
@@ -99,57 +246,66 @@
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* カードのホバーエフェクト - 斜めのグラデーション */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: all 0.6s ease;
+}
+
+.service-card:hover::before {
+  left: 100%;
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(102, 126, 234, 0.05);
+  border-color: #667eea;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
 }
 
 .service-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: grayscale(30%);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  filter: grayscale(0%) drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
 }
 
 .service-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   letter-spacing: 0.1rem;
+  color: white;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
 }
 
 .service-card p {
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.philosophy-section {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.philosophy-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  letter-spacing: 0.3rem;
-}
-
-.philosophy-text {
-  font-size: 1.2rem;
-  line-height: 2;
-  opacity: 0.9;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
 }
 
 @keyframes fadeInUp {
@@ -157,6 +313,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -165,7 +322,7 @@
 
 @media (max-width: 768px) {
   .design-container {
-    --logo-size: 70px;    /* モバイル用のロゴサイズ */
+    --logo-size: 70px;
     --logo-x: 5%;
     --logo-y: 2%;
   }
@@ -177,15 +334,16 @@
   }
 
   .design-content {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   .design-title {
     font-size: 3rem;
+    letter-spacing: 0.3rem;
   }
 
   .design-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .services-grid {
